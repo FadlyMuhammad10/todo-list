@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/table";
 import apiInstance from "@/lib/axios";
 import { Controller, useForm } from "react-hook-form";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 
 export default function TaskPage() {
   const {
@@ -35,6 +35,8 @@ export default function TaskPage() {
     formState: { errors },
   } = useForm();
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const tasks = useLoaderData();
 
@@ -46,7 +48,7 @@ export default function TaskPage() {
     });
 
     if (res.status === 201) {
-      window.location.reload();
+      navigate(0);
     }
   };
 
@@ -55,7 +57,7 @@ export default function TaskPage() {
       status: "To Do",
     });
     if (res.status === 200) {
-      window.location.reload();
+      navigate(0);
     }
   };
   const handleProgress = async (id) => {
@@ -63,7 +65,7 @@ export default function TaskPage() {
       status: "In Progress",
     });
     if (res.status === 200) {
-      window.location.reload();
+      navigate(0);
     }
   };
 
@@ -72,7 +74,7 @@ export default function TaskPage() {
       status: "Completed",
     });
     if (res.status === 200) {
-      window.location.reload();
+      navigate(0);
     }
   };
 
