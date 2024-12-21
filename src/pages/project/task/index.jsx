@@ -48,33 +48,33 @@ export default function TaskPage() {
     });
 
     if (res.status === 201) {
-      navigate(0);
+      navigate(`/project/${id}`, { replace: true });
     }
   };
 
-  const handleToDo = async (id) => {
-    const res = await apiInstance.put(`/api/tasks/${id}`, {
+  const handleToDo = async (taskId) => {
+    const res = await apiInstance.put(`/api/tasks/${taskId}`, {
       status: "To Do",
     });
     if (res.status === 200) {
-      navigate(0);
+      navigate(`/project/${id}`, { replace: true });
     }
   };
-  const handleProgress = async (id) => {
-    const res = await apiInstance.put(`/api/tasks/${id}`, {
+  const handleProgress = async (taskId) => {
+    const res = await apiInstance.put(`/api/tasks/${taskId}`, {
       status: "In Progress",
     });
     if (res.status === 200) {
-      navigate(0);
+      navigate(`/project/${id}`, { replace: true });
     }
   };
 
-  const handleComplete = async (id) => {
-    const res = await apiInstance.put(`/api/tasks/${id}`, {
+  const handleComplete = async (taskId) => {
+    const res = await apiInstance.put(`/api/tasks/${taskId}`, {
       status: "Completed",
     });
     if (res.status === 200) {
-      navigate(0);
+      navigate(`/project/${id}`, { replace: true });
     }
   };
 
